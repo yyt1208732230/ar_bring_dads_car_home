@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<meta
+			name="description"
+			content="Web site created using create-react-app"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+		/>
+		<script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+		<script>
+			// if ("addEventListener" in document) {
+			// 	document.addEventListener(
+			// 		"DOMContentLoaded",
+			// 		function () {
+			// 			FastClick.attach(document.body);
+			// 		},
+			// 		false
+			// 	);
+			// }
+			if (!window.Promise) {
+				document.writeln(
+					'<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' +
+						">" +
+						"<" +
+						"/" +
+						"script>"
+				);
+			}
+		</script>
+		<!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
+		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+		<title>Scope</title>
+		<!-- <link rel="stylesheet" type="text/css" href="../src/css/index.css" /> -->
+		<style></style>
+		<!-- <script src="./build/aframe-master.min.js"></script> -->
+		<script src="./build/aframe.min.js"></script>
+		<script src="./build/aframe-ar.js"></script>
+		<script src="./build/animation-mixer.js"></script>
+		<script></script>
+		<!-- <script src="./build/aframe-ar-nft.js"></script> -->
+	</head>
+	<body id="body">
+		<noscript>Please enable JavaScript to run this app.</noscript>
+		<div id="audiopos"></div>
+		<video
+			id="video"
+			width="800"
+			height="600"
+			style="display: none;"
+		></video>
+		<canvas
+			id="canvas"
+			width="800"
+			height="600"
+			style="display: none;"
+		></canvas>
+		<!-- <div id="infopos"></div>
+		<div id="sliderpos"></div>
+		<img id="img" src="./assets/2.jpg" style="display: none;" /> -->
+		<!-- <a-scene
+			embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
+		> -->
+		<a-scene 
+			id="ascene"
+			vr-mode-ui="enabled: false;"
+			arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+			renderer="antialias: true; alpha: true; precision: medium;"
+			style="position: fixed;">
+			<a-assets>
+				<a-asset-item id="animated-asset-austin7" src="AustinSeven.gltf"></a-asset-item>
+				<a-asset-item id="animated-asset-mgblack" src="MGBlack.gltf"></a-asset-item>
+				<a-asset-item id="animated-asset-minired" src="ClassicMiniRed.gltf"></a-asset-item>
+			</a-assets>
+			<a-marker type='barcode' value='7' id="mgMarker">
+				<a-entity
+					gltf-model="#animated-asset-mgblack" scale="0 0 0">
+				</a-entity>
+			</a-marker>
+			<a-marker type='barcode' value='11'>
+				<a-entity
+					gltf-model="#animated-asset-minired"
+					scale="9.3 9.3 9.3"
+					position="-1.25 0 1"
+					rotation="0 180 0">
+				</a-entity>
+			</a-marker>
+			<!-- handle marker with hiro preset -->
+			<!-- <a-marker preset='hiro'> -->
+			<a-marker type='barcode' value='23'>
+				<a-entity
+					gltf-model="#animated-asset-austin7"
+					scale="9.3 9.3 9.3"
+					position="-1.25 0 -1">
+				</a-entity>
+			</a-marker>
+			<a-entity camera></a-entity>	
+		</a-scene>
+		<div id="root"></div>
+	</body>
+</html>

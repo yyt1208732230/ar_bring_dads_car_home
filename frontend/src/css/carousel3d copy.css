@@ -1,0 +1,46 @@
+.carouselContent {
+    transform-style: preserve-3d;
+    width: 10%;
+    z-index: 990;
+}
+
+.itemWrapper {
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    transform-style: preserve-3d;
+    /* width: 100%; */
+    top: 289px;
+	left: 300%;
+	transform: translate(-50%, -50%);
+    width: 400px;
+	height: 400px;
+	z-index: 999;
+}
+
+.itemWrapper .rotateLayer .bgAndBlurLayer {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    transition: filter .45s;
+    margin: auto;
+    z-index: 990;
+}
+
+.itemWrapper .rotateLayer .bgAndBlurLayer .contentLayer {
+    transition: opacity .65s;  
+    z-index: 990; 
+}
+
+.img-wrapper {
+    top: 289px;
+	left: 50%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+	z-index: 999;
+}
+
+.carousel {
+    z-index: 990;
+}

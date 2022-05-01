@@ -1,0 +1,130 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "componentType": 5126,
+            "count": 110822,
+            "max": [
+                0.11314523220062256,
+                0.11439557373523712,
+                0.17157860100269318
+            ],
+            "min": [
+                -0.11314523220062256,
+                0.0,
+                -0.17157860100269318
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 1,
+            "componentType": 5126,
+            "count": 110822,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 2,
+            "componentType": 5125,
+            "count": 551508,
+            "type": "SCALAR"
+        }
+    ],
+    "asset": {
+        "generator": "Adobe Creative Cloud",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 1329864
+        },
+        {
+            "buffer": 0,
+            "byteLength": 886576,
+            "byteOffset": 1329864
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2206032,
+            "byteOffset": 2216440
+        },
+        {
+            "buffer": 0,
+            "byteLength": 4328873,
+            "byteOffset": 4422472
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 8751345,
+            "uri": "AustinSeven.bin"
+        }
+    ],
+    "images": [
+        {
+            "bufferView": 3,
+            "mimeType": "image/jpeg",
+            "name": "texture 1.JPG"
+        }
+    ],
+    "materials": [
+        {
+            "alphaMode": "OPAQUE",
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "Material_1",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.8039215803146362,
+                    0.8039215803146362,
+                    0.8039215803146362,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "metallicFactor": 0.0,
+                "roughnessFactor": 0.6000000238418579
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Node_0_primitive",
+            "primitives": [
+                {
+                    "attributes": {
+                        "POSITION": 0,
+                        "TEXCOORD_0": 1
+                    },
+                    "indices": 2,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "mesh": 0,
+            "name": "Node_0_primitive"
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "name": "Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "source": 0
+        }
+    ]
+}

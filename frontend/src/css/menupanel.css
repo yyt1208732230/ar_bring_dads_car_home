@@ -1,0 +1,16 @@
+.panel-header {
+    opacity: 0.9;
+    text-align: center;
+    background-color: #262161;
+}
+.panel-title {
+    font-family: Georgia;
+    text-align: center;
+    font-size: 26px;
+    color: #fefefe;
+}
+.panel-btn {
+    opacity: 0.9;
+    text-align: center;
+    background-color: #262161;
+}
