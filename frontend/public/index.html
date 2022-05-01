@@ -40,16 +40,18 @@
 		<!-- <link rel="stylesheet" type="text/css" href="../src/css/index.css" /> -->
 		<style></style>
 		<!-- <script src="./build/aframe-master.min.js"></script> -->
-		<script src="./build/aframe.min.js"></script>
+		<!-- <script src="./build/aframe.min.js"></script>
 		<script src="./build/aframe-ar.js"></script>
-		<script src="./build/animation-mixer.js"></script>
+		<script src="./build/animation-mixer.js"></script> -->
+		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+		<script src="https://rawgit.com/jeromeetienne/ar.js/master/aframe/build/aframe-ar.js"></script>
 		<script></script>
 		<!-- <script src="./build/aframe-ar-nft.js"></script> -->
 	</head>
 	<body id="body">
 		<noscript>Please enable JavaScript to run this app.</noscript>
 		<div id="audiopos"></div>
-		<video
+		<!-- <video
 			id="video"
 			width="800"
 			height="600"
@@ -60,14 +62,14 @@
 			width="800"
 			height="600"
 			style="display: none;"
-		></canvas>
+		></canvas> -->
 		<!-- <div id="infopos"></div>
 		<div id="sliderpos"></div>
 		<img id="img" src="./assets/2.jpg" style="display: none;" /> -->
 		<!-- <a-scene
 			embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
 		> -->
-		<a-scene 
+		<!-- <a-scene 
 			id="ascene"
 			vr-mode-ui="enabled: false;"
 			arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
@@ -91,8 +93,6 @@
 					rotation="0 180 0">
 				</a-entity>
 			</a-marker>
-			<!-- handle marker with hiro preset -->
-			<!-- <a-marker preset='hiro'> -->
 			<a-marker type='barcode' value='23'>
 				<a-entity
 					gltf-model="#animated-asset-austin7"
@@ -101,7 +101,7 @@
 				</a-entity>
 			</a-marker>
 			<a-entity camera></a-entity>	
-		</a-scene>
+		</a-scene> -->
 		<div id="root"></div>
 	</body>
 </html>

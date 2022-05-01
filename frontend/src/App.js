@@ -26,12 +26,16 @@ import LoginSuccessIcon from './imgs/succeed_user_icon_green.png'
 import LoginFailIcon from './imgs/fail_user_icon_red.png'
 import MainLogo from './imgs/logo_main.png'
 // Menu
+// react-web-ar
+import { AFrameRenderer, Marker } from 'react-web-ar'
+// aframe-react
+import { Entity } from "aframe-react";
 
 export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			checking: false, 
+			checking: false,
 			loginSucceed: false,
 			logo: true,
 			startBoxShow: true,
@@ -44,13 +48,13 @@ export default class App extends Component {
 	}
 	componentDidMount() {
 	}
-	componentWillUnmount() {}
+	componentWillUnmount() { }
 	handleLoginIconWithStartbox = (startBoxShow) => {
 		this.setState({
-            loginSucceed: !startBoxShow,
+			loginSucceed: !startBoxShow,
 			startBoxShow: startBoxShow,
 			navigateShow: !startBoxShow, //triger navigator display
-        })
+		})
 	};
 	handleMenu = (boxShow) => {
 		let navigateShow = true;
@@ -86,9 +90,9 @@ export default class App extends Component {
 			customisationShow: customisationShow,
 			mycarsShow: mycarsShow,
 			exhibitShow: exhibitShow,
-        })
-		console.log("App Level state set: ", 
-		{navigateShow, collectionShow, customisationShow, mycarsShow, exhibitShow})
+		})
+		console.log("App Level state set: ",
+			{ navigateShow, collectionShow, customisationShow, mycarsShow, exhibitShow })
 	};
 	render() {
 		let onClickMenu = (e) => {
@@ -97,102 +101,106 @@ export default class App extends Component {
 		};
 		let menu = (
 			<Menu
-			className="menu-text"
-			onClick = {onClickMenu}
-			items={[
-			  {
-				label: "Home",
-				key: "home",
-				icon: <HomeTwoTone twoToneColor="#262161" />,
-			  },
-			  {
-				label: "Collection",
-				key: "collection",
-				icon: <AppstoreTwoTone twoToneColor="#262161" />,
-			  },
-			  {
-				label: "Customisation (Coaster Digital Car)",
-				key: "customisation",
-				icon: <EditTwoTone twoToneColor="#262161" />,
-			  },
-			  {
-				label: "Exhibit",
-				key: "exhibit",
-				icon: <CameraTwoTone twoToneColor="#262161" />,
-			  },
-			  {
-				label: "My Cars",
-				key: "mycars",
-				icon: <CarTwoTone twoToneColor="#262161" />,
-			  },
-			  {
-				label: "About us",
-				key: "aboutus",
-				icon: <InfoCircleTwoTone twoToneColor="#262161" />,
-			  },
-			]}
-		  />
+				className="menu-text"
+				onClick={onClickMenu}
+				items={[
+					{
+						label: "Home",
+						key: "home",
+						icon: <HomeTwoTone twoToneColor="#262161" />,
+					},
+					{
+						label: "Collection",
+						key: "collection",
+						icon: <AppstoreTwoTone twoToneColor="#262161" />,
+					},
+					{
+						label: "Customisation (Coaster Digital Car)",
+						key: "customisation",
+						icon: <EditTwoTone twoToneColor="#262161" />,
+					},
+					{
+						label: "Exhibit",
+						key: "exhibit",
+						icon: <CameraTwoTone twoToneColor="#262161" />,
+					},
+					{
+						label: "My Cars",
+						key: "mycars",
+						icon: <CarTwoTone twoToneColor="#262161" />,
+					},
+					{
+						label: "About us",
+						key: "aboutus",
+						icon: <InfoCircleTwoTone twoToneColor="#262161" />,
+					},
+				]}
+			/>
 		)
 		return (
-			<QueueAnim delay={2000} className="queue-simple">
-				<div key="m" id="menu">
-					<Dropdown overlay={menu} placement="bottomLeft" arrow>
-						<Avatar
-						key="menu_icon"
-						size="large"
-						shape="square"
-						src={MenuIcon}
-						// onClick={this.showHelp}
-						/>
-					</Dropdown>
-				</div>
-				<Avatar
-					key="settings_icon"
-					size="large"
-					id="settings"
-					shape="square"
-					src={SettingIcon}
-					// onClick={this.showWeather}
-				></Avatar>
-				<Avatar
-					key="login_icon1"
-					size="large"
-					id="login"
-					shape="square"
-					src={LoginFailIcon}
-					hidden = {this.state.loginSucceed}
-					// onClick={this.showWeather}
-				></Avatar>
-				<Avatar
-					key="login_icon2"
-					size="large"
-					id="login"
-					shape="square"
-					src={LoginSuccessIcon}
-					hidden = {!this.state.loginSucceed}
-				></Avatar>
-				<Image
-					key="logo"
-					id="logo"
-					src={MainLogo}
-					hidden = {!this.state.logo}
-				/>
-				<Welcome handleLoginIconWithStartbox = {this.handleLoginIconWithStartbox}></Welcome>
-				{this.state.navigateShow ? 
-				<Navigator 
-					handleLoginIconWithStartbox = {this.handleLoginIconWithStartbox}
-					handleMenu = {this.handleMenu}
-				></Navigator> : null}
+			<AFrameRenderer
+				arToolKit={{ sourceType: 'webcam', detectionMode:"mono_and_matrix", matrixCodeType:"3x3"}}
+			>
 				{this.state.collectionShow ? <CollectionAR >
-				</CollectionAR>: null}
-				<Space size="middle" id="space-loading">
-					<Spin
-						id="loading"
+					</CollectionAR> : null}
+				<QueueAnim delay={2000} className="queue-simple">
+					<div key="m" id="menu">
+						<Dropdown overlay={menu} placement="bottomLeft" arrow>
+							<Avatar
+								key="menu_icon"
+								size="large"
+								shape="square"
+								src={MenuIcon}
+							// onClick={this.showHelp}
+							/>
+						</Dropdown>
+					</div>
+					<Avatar
+						key="settings_icon"
 						size="large"
-						spinning={this.state.checking}
+						id="settings"
+						shape="square"
+						src={SettingIcon}
+					// onClick={this.showWeather}
+					></Avatar>
+					<Avatar
+						key="login_icon1"
+						size="large"
+						id="login"
+						shape="square"
+						src={LoginFailIcon}
+						hidden={this.state.loginSucceed}
+					// onClick={this.showWeather}
+					></Avatar>
+					<Avatar
+						key="login_icon2"
+						size="large"
+						id="login"
+						shape="square"
+						src={LoginSuccessIcon}
+						hidden={!this.state.loginSucceed}
+					></Avatar>
+					<Image
+						key="logo"
+						id="logo"
+						src={MainLogo}
+						hidden={!this.state.logo}
 					/>
-				</Space>
-			</QueueAnim>
+					<Welcome handleLoginIconWithStartbox={this.handleLoginIconWithStartbox}></Welcome>
+					{this.state.navigateShow ?
+						<Navigator
+							handleLoginIconWithStartbox={this.handleLoginIconWithStartbox}
+							handleMenu={this.handleMenu}
+						></Navigator> : null}
+					<Space size="middle" id="space-loading">
+						<Spin
+							id="loading"
+							size="large"
+							spinning={this.state.checking}
+						/>
+					</Space>
+				</QueueAnim>
+			</AFrameRenderer>
 		);
 	}
 }

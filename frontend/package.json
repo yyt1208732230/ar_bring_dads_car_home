@@ -2,12 +2,14 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "aframe": "^1.0.4",
+    "aframe": "^1.3.0",
     "aframe-ar": "^0.2.1-a",
+    "aframe-react": "^4.4.0",
     "antd": "^4.6.0",
     "antd-mobile": "^2.3.3",
     "http-server": "^0.12.3",
@@ -16,6 +18,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "react-web-ar": "^1.0.0-beta2",
     "tfjs-tiny-yolov3": "^1.0.3",
     "tfjs-yolo": "0.0.4",
     "tfjs-yolov3": "^1.1.0"
