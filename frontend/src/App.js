@@ -5,9 +5,6 @@
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import yolo from "tfjs-yolo";
-import Model from "./Model";
-import Info from "./Info";
 import { Spin, Space, Modal, Button, Avatar, Image, Menu, Dropdown, notification } from "antd";
 import { SearchOutlined, Icon } from "@ant-design/icons";
 import { MenuOutlined, SmileTwoTone } from "@ant-design/icons";
@@ -29,7 +26,7 @@ import MainLogo from './imgs/logo_main.png'
 // react-web-ar
 import { AFrameRenderer, Marker } from 'react-web-ar'
 // aframe-react
-import { Entity } from "aframe-react";
+import { Entity, Scene } from "aframe-react";
 
 export default class App extends Component {
 	constructor(props) {
@@ -139,8 +136,16 @@ export default class App extends Component {
 		)
 		return (
 			<AFrameRenderer
-				arToolKit={{ sourceType: 'webcam', detectionMode:"mono_and_matrix", matrixCodeType:"3x3"}}
+				arToolKit={{ trackingMethod: "best", sourceType: 'webcam', detectionMode:"mono_and_matrix", matrixCodeType:"3x3"}}
+				physics="debug: true restitution:0"
 			>
+				{/* <Entity 
+					static-body
+					geometry={{primitive: 'plane', width: "500", height: "500"}} 
+					position={{x: -5, y: -2.5, z: -15}}
+					rotation={{x: -90, y: 0, z:0}}
+				/> */}
+				
 				{this.state.collectionShow ? <CollectionAR >
 					</CollectionAR> : null}
 				<QueueAnim delay={2000} className="queue-simple">

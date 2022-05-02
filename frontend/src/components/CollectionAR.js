@@ -14,7 +14,7 @@ import "../css/menupanel.css";
 // react-web-ar
 import { AFrameRenderer, Marker } from 'react-web-ar'
 // aframe-react
-import { Entity } from "aframe-react";
+import { Entity, Scene } from "aframe-react";
 
 const { Header, Content, Footer } = Layout;
 
@@ -32,6 +32,21 @@ export default class App extends Component {
         };
     }
     componentDidMount() {
+        // ReactDOM.render(
+        //     AFRAME.registerComponent('markerhandler', {
+        //         init: function () {
+        //         this.el.sceneEl.addEventListener('markerFound', () => {
+        //             window.location = 'https://www.google.com/';
+        //         })
+        //         }
+        //     })
+        // )
+    }
+    handleCollide = (e) => {
+        console.log('Collided!');
+    }
+    handleClick = () => {
+        console.log('Clicked!');
     }
     // handleStart = () => {
     //     console.log('startbox fade')
@@ -48,38 +63,77 @@ export default class App extends Component {
         let miniMarker = (
             <Marker parameters={{ type:'barcode', value:'11'}}>
                 <Entity
+                    id="miniMarker"
+                    static-body
+                    // dynamic-body
                     gltf-model="/assets/models/ClassicMiniRed.gltf"
                     scale={{x: 9.3, y: 9.3, z: 9.3}}
                     position={{ x: -1.25, y: 0, z: -1 }}
+                    events={{collide: () => {console.log('collided!!!')}}}
                 />
             </Marker>
         )
         let mgMarker = (
             <Marker parameters={{ type:'barcode', value:'7'}}>
                 <Entity
+                    id="mgMarker"
+                    static-body
                     gltf-model="/assets/models/MGBlack.gltf"
                     scale={{x: 9.3, y: 9.3, z: 9.3}}
                     position={{ x: -1.25, y: 0, z: -1 }}
-                />
+                    events={{collide: [this.handleCollide]}}
+                > </Entity>
+                {/* <Entity
+                    dynamic-body
+                    gltf-model="/assets/models/MGBlack.gltf"
+                    scale={{x: 5, y: 5, z: 5}}
+                    position={{ x: -1, y: 3, z: -1 }}
+                    mass="1000" velocity="0 0 0"
+                    events={{collide: [this.handleCollide]}}
+                > </Entity> */}
+                {/* <a-box static-body
+                position={{ x: 0, y: 0, z: 0 }}
+                log="Hello, Box!"></a-box> */}
             </Marker>
         )
         let austin7Marker = (
             <Marker parameters={{ type:'barcode', value:'23'}}>
                 <Entity
+                    id="austin7Marker"
+                    static-body
+                    // dynamic-body
                     gltf-model="/assets/models/AustinSeven.gltf"
                     scale={{x: 9.3, y: 9.3, z: 9.3}}
-                    position={{ x: -1.25, y: 0, z: -1 }}
+                    position={{ x: 0, y: 0, z: -1 }}
+                    events={{collide: this.handleCollide}}
                 />
+                {/* <Entity 
+                    static-body
+                    geometry={{primitive: 'plane', width: "3", height: "3"}} 
+                    material={{transparent: false, opacity: 0.9}}
+                    scale={{x: 3, y: 3, z: 3}}
+                    rotation={{x: -90, y: 0, z:0}}
+                    // events={{collide: this.handleCollide}}
+                /> */}
             </Marker>
         )
         let answerParkingArea = (
-            <Entity primitive='a-sphere' color="green" position="0 -2 -3"/>
+            // plane rotation & position reference with fixed-plane (Non-SLAM): 
+            // https://github.com/yyt1208732230/ar_bring_dads_car_home/blob/development_v1/frontend/docs/fixed-plane-collection-answerarea.jpg  
+            <Entity 
+                static-body
+                geometry={{primitive: 'plane', width: "5", height: "8.8"}} 
+                material={{src: "/assets/models/answerPlane.png", transparent: false, opacity: 0.9}}
+                position={{x: -5, y: -2.1, z: -15}}
+                rotation={{x: -67.5, y: 0, z:0}}
+                events={{collide: this.handleCollide}}
+            />
         )
         return (
             <>
                 {/* Append Markers */}
-                {[miniMarker, mgMarker, austin7Marker]}
                 {answerParkingArea}
+                {[miniMarker, mgMarker, austin7Marker]}
             </>
         );
     }
