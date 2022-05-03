@@ -25,8 +25,10 @@ import MainLogo from './imgs/logo_main.png'
 // Menu
 // react-web-ar
 import { AFrameRenderer, Marker } from 'react-web-ar'
+// import { AFrameRenderer, Marker } from './components/react-web-ar-fixed/index'
 // aframe-react
 import { Entity, Scene } from "aframe-react";
+const AFRAME = window.AFRAME;
 
 export default class App extends Component {
 	constructor(props) {
@@ -45,7 +47,8 @@ export default class App extends Component {
 	}
 	componentDidMount() {
 	}
-	componentWillUnmount() { }
+	componentWillUnmount() {
+	}
 	handleLoginIconWithStartbox = (startBoxShow) => {
 		this.setState({
 			loginSucceed: !startBoxShow,
@@ -137,14 +140,18 @@ export default class App extends Component {
 		return (
 			<AFrameRenderer
 				arToolKit={{ trackingMethod: "best", sourceType: 'webcam', detectionMode:"mono_and_matrix", matrixCodeType:"3x3"}}
-				physics="debug: true restitution:0"
+				physics="debug: true"
 			>
 				{/* <Entity 
 					static-body
-					geometry={{primitive: 'plane', width: "500", height: "500"}} 
-					position={{x: -5, y: -2.5, z: -15}}
-					rotation={{x: -90, y: 0, z:0}}
+					geometry={{primitive: 'box', width: "2", height: "2"}} 
+					position={{ x: -5, y: 1.1, z: -15 }}
+					rotation={{x: -45, y: 0, z:0}}
 				/> */}
+				{/* <a-entity dynamic-body>
+					<a-text value="√ Austin7" font="aileronsemibold" scale="2 2 1" position="-5 1.1 -15" color="green"></a-text>
+				</a-entity> */}
+				
 				
 				{this.state.collectionShow ? <CollectionAR >
 					</CollectionAR> : null}

@@ -36,7 +36,7 @@
 		</script>
 		<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-		<title>Scope</title>
+		<title>Bring Dad's Car Home - AR</title>
 		<!-- <link rel="stylesheet" type="text/css" href="../src/css/index.css" /> -->
 		<style></style>
 		<!-- <script src="./build/aframe-master.min.js"></script> -->
@@ -109,3 +109,69 @@
 		<div id="root"></div>
 	</body>
 </html>
+
+
+
+AFRAME.registerComponent('distruler', {
+  schema: {
+      target: {type: 'selector'},
+      current: {type: 'selector'}
+  },
+  init: function () {
+    console.log('start cal');
+
+    let check;
+
+    check = setInterval(() => {
+      let target = document.querySelector('#miniMarker')
+      let ansewArea = document.querySelector('#answerParkingArea')
+      let obj1 = target
+      let obj2 = ansewArea
+      if (!obj1 || !obj2) return;
+      let obj1Position = obj1.object3D.getWorldPosition(new THREE.Vector3());
+      let obj2Position = obj2.object3D.getWorldPosition(new THREE.Vector3());
+      let distance = obj1Position.distanceTo(obj2Position)
+
+      // do what you want with the distance:
+      console.log("target to ansewArea:" + distance);
+    }, 2000);
+  }
+});
+
+
+luler component
+AFRAME.registerComponent('distruler', {
+  schema: {
+      target: {type: 'selector'},
+      targetName: {type: 'string'}
+  },
+  multiple: true,
+  init: function () {
+    let pause = false;
+    let distance = 0;
+    let check;
+    check = setInterval(() => {
+
+      if (pause) return;
+      let currentPosition = this.el.object3D.getWorldPosition(new THREE.Vector3());
+      let targetPosition = this.data.target.object3D.getWorldPosition(new THREE.Vector3());
+      let _distance = currentPosition.distanceTo(targetPosition)
+
+      // do what you want with the distance:
+      if(_distance != distance) {
+        console.log("current to " + this.data.targetName + " dist:" + _distance);
+      }
+      
+      distance = _distance
+    }, 2000);
+  },
+  update: function (oldData) {},
+  remove: function () {
+    pause = true;
+  }
+});
+
+
+1. delete comments
+2. reset web-react-ar
+3. deploy

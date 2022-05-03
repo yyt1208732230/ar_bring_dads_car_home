@@ -13,10 +13,12 @@ import "../css/menupanel.css";
 
 // react-web-ar
 import { AFrameRenderer, Marker } from 'react-web-ar'
+// import { AFrameRenderer, Marker } from './react-web-ar-fixed/index'
 // aframe-react
 import { Entity, Scene } from "aframe-react";
 
 const { Header, Content, Footer } = Layout;
+const AFRAME = window.AFRAME;
 
 export default class App extends Component {
     constructor(props) { //scr, title, description
@@ -32,15 +34,6 @@ export default class App extends Component {
         };
     }
     componentDidMount() {
-        // ReactDOM.render(
-        //     AFRAME.registerComponent('markerhandler', {
-        //         init: function () {
-        //         this.el.sceneEl.addEventListener('markerFound', () => {
-        //             window.location = 'https://www.google.com/';
-        //         })
-        //         }
-        //     })
-        // )
     }
     handleCollide = (e) => {
         console.log('Collided!');
@@ -48,92 +41,109 @@ export default class App extends Component {
     handleClick = () => {
         console.log('Clicked!');
     }
-    // handleStart = () => {
-    //     console.log('startbox fade')
-    //     // console.log(this.props.props.startbox)
-    //     let startbox = this.state.startbox
-    //     this.props.handleLoginIconWithStartbox(startbox)
-    // };
-    // handleMenu = () => {
-    //     console.log("menu click: " + this.state.key)
-    //     this.props.handleMenu(this.state.key)
-    // };
+    handlemarkerFound = () => {
+        console.log('marker found!');
+    }
+    shootDistance = () => {
+    }
     render() {
         // Note: we used 3X3 barcode for the demostration project, but recommand QR code to unlock the number limitation of bar code. 
         let miniMarker = (
-            <Marker parameters={{ type:'barcode', value:'11'}}>
+            <Marker markerFound parameters={{ type: 'barcode', value: '11' }}>
                 <Entity
                     id="miniMarker"
-                    static-body
+                    // static-body
                     // dynamic-body
                     gltf-model="/assets/models/ClassicMiniRed.gltf"
-                    scale={{x: 9.3, y: 9.3, z: 9.3}}
+                    scale={{ x: 9.3, y: 9.3, z: 9.3 }}
                     position={{ x: -1.25, y: 0, z: -1 }}
-                    events={{collide: () => {console.log('collided!!!')}}}
+                    events={{ distCalLoadM1: this.handleClick }}
                 />
             </Marker>
         )
         let mgMarker = (
-            <Marker parameters={{ type:'barcode', value:'7'}}>
+            <Marker parameters={{ type: 'barcode', value: '7' }}>
                 <Entity
                     id="mgMarker"
                     static-body
+                    // dynamic-body
                     gltf-model="/assets/models/MGBlack.gltf"
-                    scale={{x: 9.3, y: 9.3, z: 9.3}}
+                    scale={{ x: 9.3, y: 9.3, z: 9.3 }}
                     position={{ x: -1.25, y: 0, z: -1 }}
-                    events={{collide: [this.handleCollide]}}
+                    events={{ collide: [this.handleCollide] }}
                 > </Entity>
-                {/* <Entity
-                    dynamic-body
-                    gltf-model="/assets/models/MGBlack.gltf"
-                    scale={{x: 5, y: 5, z: 5}}
-                    position={{ x: -1, y: 3, z: -1 }}
-                    mass="1000" velocity="0 0 0"
-                    events={{collide: [this.handleCollide]}}
-                > </Entity> */}
-                {/* <a-box static-body
-                position={{ x: 0, y: 0, z: 0 }}
-                log="Hello, Box!"></a-box> */}
             </Marker>
         )
         let austin7Marker = (
-            <Marker parameters={{ type:'barcode', value:'23'}}>
+            <Marker parameters={{ type: 'barcode', value: '23' }}>
                 <Entity
                     id="austin7Marker"
                     static-body
                     // dynamic-body
                     gltf-model="/assets/models/AustinSeven.gltf"
-                    scale={{x: 9.3, y: 9.3, z: 9.3}}
+                    scale={{ x: 9.3, y: 9.3, z: 9.3 }}
                     position={{ x: 0, y: 0, z: -1 }}
-                    events={{collide: this.handleCollide}}
+                    events={{ collide: this.handleCollide }}
                 />
-                {/* <Entity 
+            </Marker>
+        )
+        let metroMarker = (
+            <Marker parameters={{ type: 'barcode', value: '8' }}>
+                <Entity
+                    id="metroMarker"
                     static-body
-                    geometry={{primitive: 'plane', width: "3", height: "3"}} 
-                    material={{transparent: false, opacity: 0.9}}
-                    scale={{x: 3, y: 3, z: 3}}
-                    rotation={{x: -90, y: 0, z:0}}
-                    // events={{collide: this.handleCollide}}
-                /> */}
+                    // dynamic-body
+                    gltf-model="/assets/models/metroRed.glb"
+                    scale={{ x: 1.3, y: 1.3, z: 1.3 }}
+                    position={{ x: 0, y: 0, z: -1 }}
+                />
+            </Marker>
+        )
+        let trMarker = (
+            <Marker parameters={{ type: 'barcode', value: '33' }}>
+                <Entity
+                    id="trMarker"
+                    static-body
+                    // dynamic-body
+                    gltf-model="/assets/models/TRlightRed.glb"
+                    scale={{ x: 0.65, y: 0.65, z: 0.65 }}
+                    position={{ x: 0, y: 0, z: -1 }}
+                />
             </Marker>
         )
         let answerParkingArea = (
             // plane rotation & position reference with fixed-plane (Non-SLAM): 
             // https://github.com/yyt1208732230/ar_bring_dads_car_home/blob/development_v1/frontend/docs/fixed-plane-collection-answerarea.jpg  
-            <Entity 
+            <Entity
+                id="answerParkingArea"
                 static-body
-                geometry={{primitive: 'plane', width: "5", height: "8.8"}} 
-                material={{src: "/assets/models/answerPlane.png", transparent: false, opacity: 0.9}}
-                position={{x: -5, y: -2.1, z: -15}}
-                rotation={{x: -67.5, y: 0, z:0}}
-                events={{collide: this.handleCollide}}
+                distruler__1="target: #austin7Marker; targetName: Austin-7; questionId: Q1CARBORN"
+                distruler__2="target: #miniMarker; targetName: Mini-Red; questionId: Q1CARBORN"
+                distruler__3="target: #mgMarker; targetName: MG-Black; questionId: Q1CARBORN"
+                geometry={{ primitive: 'plane', width: "5", height: "8.8" }}
+                material={{ src: "/assets/models/answerPlane.png", transparent: false, opacity: 0.9 }}
+                position={{ x: -5, y: -2.1, z: -15 }}
+                rotation={{ x: -67.5, y: 0, z: 0 }}
+                events={{ collide: this.handleCollide }}
+            />
+        )
+        let staticPlane = (
+            <Entity
+                id="staticPlane"
+                static-body
+                geometry={{ primitive: 'plane', width: "50", height: "20" }}
+                material={{ transparent: true, opacity: 0 }}
+                position={{ x: 5, y: -7.3, z: -15 }}
+                rotation={{ x: -67.5, y: 0, z: 0 }}
+                events={{ collide: this.handleCollide }}
             />
         )
         return (
             <>
                 {/* Append Markers */}
-                {answerParkingArea}
-                {[miniMarker, mgMarker, austin7Marker]}
+                {[answerParkingArea, staticPlane]}
+                {/* Makers list should be load from the database */}
+                {[miniMarker, mgMarker, austin7Marker, metroMarker, trMarker]}
             </>
         );
     }
