@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Card, message, Modal, Button, Space } from "antd";
 import { Row, Col, Layout } from "antd";
+import { CloseSquareOutlined } from "@ant-design/icons";
 import Animate from "rc-animate";
 import QueueAnim from "rc-queue-anim";
 import 'antd/dist/antd.css';
@@ -35,6 +36,12 @@ export default class App extends Component {
     }
     componentDidMount() {
     }
+    removeAframeUnused = () => {
+        let _aText = document.querySelector("#answerText1")
+        if(_aText) {
+            _aText.parentElement.removeChild(_aText);
+        }
+    }
     handleCollide = (e) => {
         console.log('Collided!');
     }
@@ -44,7 +51,39 @@ export default class App extends Component {
     handlemarkerFound = () => {
         console.log('marker found!');
     }
-    shootDistance = () => {
+    handleQuit = () => {
+        const key = 'updatable';
+
+        message.loading({ content: 'Going back to my collection...', key });
+        setTimeout(() => {
+            message.warning({ content: 'Answers not saved.', key, duration: 2 });
+            this.removeAframeUnused();
+            this.props.handleCollectionProcess('collectionList')
+        }, 2000);
+    }
+    handleReward = () => {
+        let answerScore = document.querySelector("#answerScore");
+        let currentScore = (answerScore && answerScore.hasAttributes()) ? answerScore.attributes.value.value : -1
+        console.log('check reward score: ' + currentScore);
+
+        const key = 'updatable';
+        message.loading({ content: 'Checking Answers...', key });
+
+        // score more than 1 - succeed
+        if (currentScore == 1) {
+            setTimeout(() => {
+                message.success({ content: 'Congratulations. Decal collected!', key, duration: 2 });
+            }, 1000);
+            let next = setTimeout(() => {
+                this.removeAframeUnused();
+                this.props.handleCollectionProcess('collectionAward')
+            }, 2000)
+        } else { // score less than 1 - failed
+            setTimeout(() => {
+                message.warning({ content: 'You almost there!', key, duration: 2 });
+            }, 1000);
+        }
+
     }
     render() {
         // Note: we used 3X3 barcode for the demostration project, but recommand QR code to unlock the number limitation of bar code. 
@@ -144,6 +183,24 @@ export default class App extends Component {
                 {[answerParkingArea, staticPlane]}
                 {/* Makers list should be load from the database */}
                 {[miniMarker, mgMarker, austin7Marker, metroMarker, trMarker]}
+                <Button
+                    id="card-close"
+                    // size="small"
+                    // type="text"
+                    onClick={this.handleReward}
+                >
+                    Receive the Decal
+                </Button>
+                <Button
+                    id="card-close"
+                    // size="small"
+                    // type="text"
+                    onClick={this.handleQuit}
+                >
+                    <CloseSquareOutlined />
+                </Button>
+                <span id="answerScore" value='0' hidden='true'></span>
+                <span id="detecting" value='0' hidden='true'></span>
             </>
         );
     }

@@ -204,6 +204,37 @@
 	text-align: center;
 	text-shadow: 0px 1px 100px rgba(227,7,19,0.2);
 }
+/* Collection */
+#card-collaward {
+	width: 401px;
+	height: 500px;
+	border-radius: 23px;
+	background-color: #ebebeb;
+	background-position: center center;
+	position: absolute;
+	top: 400px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 990;
+	opacity: 0.95;
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+}
+#card-close {
+	/* background-position: center center; */
+	position: absolute;
+	top: 157px;
+	left: 63%;
+	z-index: 991;
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+}
+#btn-checkreward {
+	position: absolute;
+	top: 157px;
+	left: 63%;
+	z-index: 991;
+}
 /* Other (deprecated) */
 .fakes {
 	opacity: 0.01; /* 透明度，这个区域要藏起来 */

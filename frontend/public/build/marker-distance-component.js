@@ -21,6 +21,7 @@ AFRAME.registerComponent('distruler', {
       let msg = incorrectMsg
       let answerFlag = false
 
+      // Question Bank should be requested from DBs
       switch(q) {
         case 'Q1CARBORN':
           fontColor = (a === 'Austin-7') ? correctColor : incorrectColor
@@ -37,7 +38,7 @@ AFRAME.registerComponent('distruler', {
       let oldTextObj = document.querySelector('#answerText1')
       // Create element to be shown
       let obj = document.createElement('a-text')
-      // obj.setAttribute('shadow', '')
+      obj.setAttribute('shadow', '')
       obj.setAttribute('id', 'answerText1')
       obj.setAttribute('value', targetName + ' (' + msg + ')')
       obj.setAttribute('color', fontColor)
@@ -48,6 +49,7 @@ AFRAME.registerComponent('distruler', {
         this.el.object3D.getWorldPosition()
       )
       obj.object3D.position.set(absPos.x, absPos.y + 3, absPos.z)
+      obj.setAttribute('visible', true)
       // if(!answerFlag) {
       //   obj.setAttribute('dynamic-body', {
       //     shape: 'auto',
@@ -56,11 +58,22 @@ AFRAME.registerComponent('distruler', {
       //     angularDamping: 0.5,
       //   })
       // }
-      obj.setAttribute('visible', true)
+
+      // show text e-entity
       if(oldTextObj) {
         this.el.sceneEl.removeChild(oldTextObj)
       }
       this.el.sceneEl.appendChild(obj)
+
+      // Set score by rules
+      let scoreBoard = document.querySelector("#answerScore");
+      if(scoreBoard) {
+        if(answerFlag) {
+          scoreBoard.setAttribute('value', '1')
+        }else{
+          scoreBoard.setAttribute('value', '0')
+        }
+      }
     }
     
     check = setInterval(() => {

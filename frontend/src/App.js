@@ -16,6 +16,7 @@ import "./css/index.css";
 import Welcome from "./components/Welcome";
 import Navigator from "./components/Navigator";
 import CollectionAR from "./components/CollectionAR";
+import CollectionRender from "./components/CollectionRender";
 // Icons
 import MenuIcon from './imgs/icon_menu.png'
 import SettingIcon from './imgs/icon_setting.png'
@@ -83,6 +84,8 @@ export default class App extends Component {
 				navigateShow = false;
 				exhibitShow = true;
 				break;
+			default:
+				navigateShow = true;
 		}
 		this.setState({
 			navigateShow: navigateShow,
@@ -152,9 +155,8 @@ export default class App extends Component {
 					<a-text value="√ Austin7" font="aileronsemibold" scale="2 2 1" position="-5 1.1 -15" color="green"></a-text>
 				</a-entity> */}
 				
+				{this.state.collectionShow ? <CollectionRender handleMenu={this.handleMenu}></CollectionRender> : null}
 				
-				{this.state.collectionShow ? <CollectionAR >
-					</CollectionAR> : null}
 				<QueueAnim delay={2000} className="queue-simple">
 					<div key="m" id="menu">
 						<Dropdown overlay={menu} placement="bottomLeft" arrow>
