@@ -25,9 +25,6 @@
 				);
 			}
 		</script>
-		<!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
-		<!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
-		<!-- <link rel="stylesheet" type="text/css" href="../src/css/index.css" /> -->
 		<title>Bring Dad's Car Home - AR</title>
 		<style></style>
 		<!-- <script src="./build/aframe-master.min.js"></script> -->
@@ -52,88 +49,6 @@
 	</head>
 	<body id="body">
 		<noscript>Please enable JavaScript to run this app.</noscript>
-		<div id="audiopos"></div>
-		<!-- <video
-			id="video"
-			width="800"
-			height="600"
-			style="display: none;"
-		></video>
-		<canvas
-			id="canvas"
-			width="800"
-			height="600"
-			style="display: none;"
-		></canvas> -->
-		<!-- <div id="infopos"></div>
-		<div id="sliderpos"></div>
-		<img id="img" src="./assets/2.jpg" style="display: none;" /> -->
-		<!-- <a-scene
-			embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
-		> -->
-		<!-- <a-scene 
-			physics="debug: true"
-			id="ascene"
-			vr-mode-ui="enabled: false;"
-			arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
-			renderer="antialias: true; alpha: true; precision: medium;"
-			style="position: fixed;">
-			<a-assets>
-				<a-asset-item id="animated-asset-austin7" src="./assets/models/AustinSeven.gltf"></a-asset-item>
-				<a-asset-item id="animated-asset-mgblack" src="./assets/models/MGBlack.gltf"></a-asset-item>
-				<a-asset-item id="animated-asset-minired" src="./assets/models/ClassicMiniRed.gltf"></a-asset-item>
-			</a-assets>
-			<a-marker type='barcode' value='7' id="mgMarker">
-				<a-entity
-					dynamic-body
-					gltf-model="#animated-asset-mgblack" scale="0 0 0">
-				</a-entity>
-			</a-marker>
-			<a-marker type='barcode' value='11'>
-				<a-entity
-					dynamic-body
-					gltf-model="#animated-asset-minired"
-					scale="9.3 9.3 9.3"
-					position="-1.25 0 1"
-					rotation="0 180 0">
-				</a-entity>
-			</a-marker>
-			<a-marker type='barcode' value='23'>
-				<a-entity
-					dynamic-body
-					gltf-model="#animated-asset-austin7"
-					scale="9.3 9.3 9.3"
-					position="-1.25 0 -1">
-				</a-entity>
-			</a-marker>
-			<a-entity camera></a-entity>	
-		</a-scene> -->
 		<div id="root"></div>
 	</body>
-	<!-- <script>
-		window.addEventListener('load', () => {
-			const camera = document.querySelector('[camera]');
-			const marker = document.querySelector('a-marker');
-			let check;
-
-			marker.addEventListener('markerFound', () => {
-				let cameraPosition = camera.object3D.position;
-				let markerPosition = marker.object3D.position;
-				let distance = cameraPosition.distanceTo(markerPosition)
-
-				check = setInterval(() => {
-					cameraPosition = camera.object3D.position;
-					markerPosition = marker.object3D.position;
-					distance = cameraPosition.distanceTo(markerPosition)
-
-					// do what you want with the distance:
-					console.log("distance: " + distance);
-				}, 100);
-			});
-
-			marker.addEventListener('markerLost', () => {
-				clearInterval(check);
-			})
-		})
-	</script> -->
 </html>

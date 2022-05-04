@@ -9,6 +9,10 @@ import 'antd/dist/antd.css';
 import "../css/index.css";
 // Imgs
 import DriveDadsCarImage from '../imgs/drivedadscar.jpg'
+const env = 'dev'
+const demo_url = 'https://yyt1208732230.github.io/Bring-Dads-Car-Home-Demo-Site/'
+const drviveDadsCarStaticSrc = (env=='local' ? '' : demo_url) + 'static/media/drivedadscar.75c062d3.jpg'
+
 export default class App extends Component {
     constructor(props) {
         console.log("info to show: ", props.props);
@@ -55,7 +59,7 @@ export default class App extends Component {
                             key="startCard"
                             id="centrepanel"
                             // style={{ "border-radius": "23px" }}
-                            cover={<img className="panelbackground" alt="Drive and Bring Dad's Car Home™" src={DriveDadsCarImage} />}
+                            cover={<img className="panelbackground" style={{opacity: '0.75'}} alt="Drive and Bring Dad's Car Home™" src='https://yyt1208732230.github.io/Bring-Dads-Car-Home-Demo-Site/static/media/drivedadscar.75c062d3.jpg' />}
                         >
                             <div id="startbar">
                                 <p className="introduction">"Pick a car and keep your story forever". Collect your favourite decoration elements with coasters, customise your digital car and bring it home!</p>
