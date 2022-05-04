@@ -55,6 +55,7 @@ export default class App extends Component {
 			loginSucceed: !startBoxShow,
 			startBoxShow: startBoxShow,
 			navigateShow: !startBoxShow, //triger navigator display
+			logo: !this.state.logo
 		})
 	};
 	handleMenu = (boxShow) => {
@@ -142,8 +143,11 @@ export default class App extends Component {
 		)
 		return (
 			<AFrameRenderer
-				arToolKit={{ trackingMethod: "best", sourceType: 'webcam', detectionMode:"mono_and_matrix", matrixCodeType:"3x3"}}
+				arToolKit={{ trackingMethod: "best", sourceType: 'webcam', detectionMode:"mono_and_matrix", matrixCodeType:"3x3", debugUIEnabled: false}}
+				
 				physics="debug: true"
+				debugUIEnabled="false"
+				vr-mode-ui="enabled: false"
 			>
 				{/* <Entity 
 					static-body
@@ -156,7 +160,7 @@ export default class App extends Component {
 				</a-entity> */}
 				
 				{this.state.collectionShow ? <CollectionRender handleMenu={this.handleMenu}></CollectionRender> : null}
-				
+
 				<QueueAnim delay={2000} className="queue-simple">
 					<div key="m" id="menu">
 						<Dropdown overlay={menu} placement="bottomLeft" arrow>
@@ -197,6 +201,7 @@ export default class App extends Component {
 					<Image
 						key="logo"
 						id="logo"
+						style={{display: 'block'}}
 						src={MainLogo}
 						hidden={!this.state.logo}
 					/>

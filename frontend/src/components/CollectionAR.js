@@ -1,20 +1,20 @@
 // Laurence Yu, 2022 April
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Card, message, Modal, Button, Space } from "antd";
+import { Card, message, Modal, Button, Space, Image } from "antd";
 import { Row, Col, Layout } from "antd";
-import { CloseSquareOutlined } from "@ant-design/icons";
+import { CloseSquareTwoTone, UnlockTwoTone } from "@ant-design/icons";
 import Animate from "rc-animate";
 import QueueAnim from "rc-queue-anim";
 import 'antd/dist/antd.css';
 import "../css/index.css";
 import "../css/carousel3d.css";
 import "../css/menupanel.css";
-// Models
-
+// Imgs
+import birthdayCakeDecal from '../imgs/birthdayCake.png'
+import targetRewardImg from '../imgs/targetReward-b.png'
 // react-web-ar
 import { AFrameRenderer, Marker } from 'react-web-ar'
-// import { AFrameRenderer, Marker } from './react-web-ar-fixed/index'
 // aframe-react
 import { Entity, Scene } from "aframe-react";
 
@@ -38,7 +38,7 @@ export default class App extends Component {
     }
     removeAframeUnused = () => {
         let _aText = document.querySelector("#answerText1")
-        if(_aText) {
+        if (_aText) {
             _aText.parentElement.removeChild(_aText);
         }
     }
@@ -183,22 +183,40 @@ export default class App extends Component {
                 {[answerParkingArea, staticPlane]}
                 {/* Makers list should be load from the database */}
                 {[miniMarker, mgMarker, austin7Marker, metroMarker, trMarker]}
+                {/* Question Bar */}
+                <Card id="bar-question" bodyStyle={{ padding: '0px 25px 0px 25px' }}>
+                    <h2 style={{color: '#262161', fontWeight: '700', fontFamily: 'Georgia', marginTop: '0.5em'}}> Q1: Move ONE little car changed the world and he born in 1920s. </h2>
+                </Card>
+                {/* <Card
+                    id="ard-targetaward"
+                    cover={<img alt="reward target" src={targetRewardImg} />}
+                >
+                </Card> */}
+                {/* // style={{ width: '120px', height: '60px' }} */}
+                {/* Buttons */}
                 <Button
-                    id="card-close"
-                    // size="small"
-                    // type="text"
+                    id="btn-checkreward"
+                    size="default"
+                    type="text"
                     onClick={this.handleReward}
                 >
-                    Receive the Decal
+                    <UnlockTwoTone twoToneColor="#262161"/> Unlock this Decal
                 </Button>
                 <Button
-                    id="card-close"
-                    // size="small"
-                    // type="text"
+                    id="collection-close"
+                    size="large"
+                    type="text"
                     onClick={this.handleQuit}
                 >
-                    <CloseSquareOutlined />
+                    <CloseSquareTwoTone twoToneColor="#262161" style={{fontSize: '23px', opacity: '0.75'}}/>
                 </Button>
+                {/* Reward Target */}
+                <img id="card-targetaward" alt="reward target" src={targetRewardImg} />
+                <img id="card-decal" alt="cake decal April" src={birthdayCakeDecal} />
+                <div id="text-decal">
+                    <h4>April Cake Decal (Limited Edition)</h4>
+                    <h6>NFT: BDCH-0405-GBCJ-ACD-01</h6>
+                </div>
                 <span id="answerScore" value='0' hidden='true'></span>
                 <span id="detecting" value='0' hidden='true'></span>
             </>

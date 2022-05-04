@@ -229,52 +229,79 @@
 	/* background-repeat: no-repeat; */
 	/* background-size: cover; */
 }
+#collection-close {
+	/* background-position: center center; */
+	position: absolute;
+	top: 48px;
+	left: 93%;
+	z-index: 991;
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+}
 #btn-checkreward {
 	position: absolute;
+    top: 225px;
+    left: 78%;
+    z-index: 991;
+    font-family: Georgia;
+    font-weight: 800;
+    color: #262161;
+}
+#bar-question {
+	position: absolute;
 	top: 157px;
-	left: 63%;
+	left: 5%;
+	z-index: 990;
+	opacity: 0.7;
+	border-radius: 15px;
+}
+#bar-target {
+	position: absolute;
+	top: 120px;
+	left: 70%;
+	z-index: 980;
+}
+#card-targetaward {
+	width: 401px;
+	height: 200px;
+	border-radius: 23px;
+	background-position: center center;
+	position: absolute;
+	top: 116px;
+	left: 76%;
+	transform: translate(-50%, -50%);
+	z-index: 990;
+	opacity: 0.95;
+	display: inline-block;
+	background: none;
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+}
+#card-decal {
+	width: 128px;
+	/* height: 200px; */
+	border-radius: 23px;
+	background-position: center center;
+	position: absolute;
+	top: 89px;
+	left: 85.5%;
+	transform: translate(-50%, -50%);
 	z-index: 991;
+	opacity: 0.95;
+	display: inline-block;
+	background: none;
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+}
+#text-decal {
+	width: 300px;
+    text-align: center;
+    background-position: center center;
+    position: absolute;
+    top: 197px;
+    left: 85.5%;
+    transform: translate(-50%, -50%);
+    z-index: 991;
+    opacity: 0.98;
 }
 /* Other (deprecated) */
-.fakes {
-	opacity: 0.01; /* 透明度，这个区域要藏起来 */
-	position: fixed;
-	z-index: 990;
-	width: 150px;
-	height: 150px;
-}
-#btn-fake1 {
-	right: 150px;
-	top: 150px;
-	background-color: red;
-}
-#btn-fake2 {
-	right: 150px;
-	top: 300px;
-	background-color: blue;
-}
-#btn-fake3 {
-	right: 300px;
-	top: 150px;
-	background-color: green;
-}
-#btn-fake4 {
-	right: 300px;
-	top: 300px;
-	background-color: yellow;
-}
-#btn-swaprotate {
-	position: fixed;
-	left: 83%;
-	transform: translateX(-50%);
-	z-index: 991;
-	bottom: 25%;
-}
-#bg {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgb(222, 222, 222);
-}
