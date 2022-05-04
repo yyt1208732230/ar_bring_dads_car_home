@@ -17,7 +17,15 @@ import targetRewardImg from '../imgs/targetReward-b.png'
 import { AFrameRenderer, Marker } from 'react-web-ar'
 // aframe-react
 import { Entity, Scene } from "aframe-react";
-
+// Models (public)
+const env = 'dev'
+const demo_url = 'https://yyt1208732230.github.io/Bring-Dads-Car-Home-Demo-Site/'
+const mgModelSrc = (env=='local' ?  '' : demo_url) + '/assets/models/MGBlack.gltf'
+const miniModelSrc = (env=='local' ?  '' : demo_url) + '/assets/models/ClassicMiniRed.gltf'
+const austinModelSrc = (env=='local' ?  '' : demo_url) + '/assets/models/AustinSeven.gltf'
+const answerPlaneSrc = (env=='local' ?  '' : demo_url) + '/assets/models/answerPlane.png'
+const trModelSrc = (env=='local' ?  '' : demo_url) + '/assets/models/TRlightRed.glb'
+const metroModelSrc = (env=='local' ?  '' : demo_url) + '/assets/models/metroRed.glb'
 const { Header, Content, Footer } = Layout;
 const AFRAME = window.AFRAME;
 
@@ -93,7 +101,7 @@ export default class App extends Component {
                     id="miniMarker"
                     // static-body
                     // dynamic-body
-                    gltf-model="/assets/models/ClassicMiniRed.gltf"
+                    gltf-model={miniModelSrc}
                     scale={{ x: 9.3, y: 9.3, z: 9.3 }}
                     position={{ x: -1.25, y: 0, z: -1 }}
                     events={{ distCalLoadM1: this.handleClick }}
@@ -106,7 +114,7 @@ export default class App extends Component {
                     id="mgMarker"
                     static-body
                     // dynamic-body
-                    gltf-model="/assets/models/MGBlack.gltf"
+                    gltf-model={mgModelSrc}
                     scale={{ x: 9.3, y: 9.3, z: 9.3 }}
                     position={{ x: -1.25, y: 0, z: -1 }}
                     events={{ collide: [this.handleCollide] }}
@@ -119,7 +127,7 @@ export default class App extends Component {
                     id="austin7Marker"
                     static-body
                     // dynamic-body
-                    gltf-model="/assets/models/AustinSeven.gltf"
+                    gltf-model={austinModelSrc}
                     scale={{ x: 9.3, y: 9.3, z: 9.3 }}
                     position={{ x: 0, y: 0, z: -1 }}
                     events={{ collide: this.handleCollide }}
@@ -132,7 +140,7 @@ export default class App extends Component {
                     id="metroMarker"
                     static-body
                     // dynamic-body
-                    gltf-model="/assets/models/metroRed.glb"
+                    gltf-model={metroModelSrc}
                     scale={{ x: 1.3, y: 1.3, z: 1.3 }}
                     position={{ x: 0, y: 0, z: -1 }}
                 />
@@ -144,7 +152,7 @@ export default class App extends Component {
                     id="trMarker"
                     static-body
                     // dynamic-body
-                    gltf-model="/assets/models/TRlightRed.glb"
+                    gltf-model={trModelSrc}
                     scale={{ x: 0.65, y: 0.65, z: 0.65 }}
                     position={{ x: 0, y: 0, z: -1 }}
                 />
@@ -160,7 +168,7 @@ export default class App extends Component {
                 distruler__2="target: #miniMarker; targetName: Mini-Red; questionId: Q1CARBORN"
                 distruler__3="target: #mgMarker; targetName: MG-Black; questionId: Q1CARBORN"
                 geometry={{ primitive: 'plane', width: "5", height: "8.8" }}
-                material={{ src: "/assets/models/answerPlane.png", transparent: false, opacity: 0.9 }}
+                material={{ src: answerPlaneSrc, transparent: false, opacity: 0.9 }}
                 position={{ x: -5, y: -2.1, z: -15 }}
                 rotation={{ x: -67.5, y: 0, z: 0 }}
                 events={{ collide: this.handleCollide }}

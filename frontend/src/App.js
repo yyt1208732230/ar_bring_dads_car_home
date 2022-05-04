@@ -145,7 +145,7 @@ export default class App extends Component {
 			<AFrameRenderer
 				arToolKit={{ trackingMethod: "best", sourceType: 'webcam', detectionMode:"mono_and_matrix", matrixCodeType:"3x3", debugUIEnabled: false}}
 				
-				physics="debug: true"
+				physics="debug: false"
 				debugUIEnabled="false"
 				vr-mode-ui="enabled: false"
 			>
